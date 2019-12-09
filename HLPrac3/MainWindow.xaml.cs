@@ -117,6 +117,11 @@ namespace HLPrac3
                 //Drop Date setter
                 loadModel.drop_appointment = dropDate_picker.SelectedDate.Value;
 
+                //Drop Time setter
+
+                //Last updated is now
+                loadModel.last_updated_time = DateTime.Now;
+
                 loadModel.driver_id = Convert.ToInt32(driver_txt.Text.Trim());
                 loadModel.dispatch_id = Convert.ToInt32(dispatch_txt.Text.Trim());
                 loadModel.customer_id = Convert.ToInt32(customer_txt.Text.Trim());

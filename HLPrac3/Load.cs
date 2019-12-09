@@ -38,7 +38,7 @@ namespace HLPrac3
         public Nullable<System.TimeSpan> drop_time { get; set; }
         public Nullable<int> drop_address_id { get; set; }
         public Nullable<System.TimeSpan> eta_time { get; set; }
-        public Nullable<System.TimeSpan> last_updated_time { get; set; }
+        public Nullable<System.DateTime> last_updated_time { get; set; }
         public Nullable<int> carrier_id { get; set; }
         public Nullable<int> driver_id { get; set; }
         public Nullable<int> dispatch_id { get; set; }

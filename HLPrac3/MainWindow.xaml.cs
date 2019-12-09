@@ -81,39 +81,6 @@ namespace HLPrac3
             LoadBoard.ItemsSource = HOTLOADEntity.Loads.ToList();
         }
 
-        //DateBuilding method
-        public DateTime DateBuilder(DateTime datePicker, string timeText)
-        {
-            //Starting value
-            DateTime newDate = datePicker;
-            //Set default time value
-            if (timeText == "")
-            {
-                timeText = "00:00";
-            }
-
-            //Zero out previous time values
-            newDate = newDate.AddHours(-newDate.Hour);
-            newDate = newDate.AddMinutes(-newDate.Minute);
-
-            //Add in time values
-            string[] splitTime = timeText.Split(':');
-            newDate = newDate.AddHours(Convert.ToInt32(splitTime[0]));
-            newDate = newDate.AddMinutes(Convert.ToInt32(splitTime[1]));
-
-            return newDate;
-        }
-
-        //Time String Builder
-        public string TimeStringBuilder(DateTime datetime)
-        {
-            string time;
-
-            time = datetime.Hour + ":" + datetime.Minute;
-
-            return time;
-        }
-
         //Update or Create Button
         private void update_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -142,10 +109,13 @@ namespace HLPrac3
                 loadModel.carrier_rate = Convert.ToDecimal(carrierRate_txt.Text.Trim());
                 loadModel.customer_rate = Convert.ToDecimal(customerRate_txt.Text.Trim());
 
-                //Pick DateTime setter
-                loadModel.pick_date = DateBuilder(pickDate_picker.SelectedDate.Value, pickAptTime_txt.Text);
-                //Drop DateTime setter
-                loadModel.drop_appointment = DateBuilder(dropDate_picker.SelectedDate.Value, dropAptTime_txt.Text);
+                //Pick Date setter
+                loadModel.pick_date = pickDate_picker.SelectedDate.Value;
+
+                //Pick Time setter
+
+                //Drop Date setter
+                loadModel.drop_appointment = dropDate_picker.SelectedDate.Value;
 
                 loadModel.driver_id = Convert.ToInt32(driver_txt.Text.Trim());
                 loadModel.dispatch_id = Convert.ToInt32(dispatch_txt.Text.Trim());
@@ -218,9 +188,9 @@ namespace HLPrac3
 
                     //Dates & Times
                     pickDate_picker.Text = loadModel.pick_date.ToString();
-                    pickAptTime_txt.Text = TimeStringBuilder(loadModel.pick_date.Value);
+                    //pickAptTime_txt.Text = TimeStringBuilder(loadModel.pick_date.Value);
                     dropDate_picker.Text = loadModel.drop_appointment.ToString();
-                    dropAptTime_txt.Text = TimeStringBuilder(loadModel.drop_appointment.Value);
+                    //dropAptTime_txt.Text = TimeStringBuilder(loadModel.drop_appointment.Value);
 
                     driver_txt.Text = loadModel.driver_id.ToString();
                     dispatch_txt.Text = loadModel.dispatch_id.ToString();
